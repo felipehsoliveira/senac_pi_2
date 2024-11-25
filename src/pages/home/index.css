@@ -1,0 +1,509 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  /* Add margin here */
+  flex-wrap: wrap;
+  padding: clamp(5px, 2vw, 10px);
+  /* Ensure there's some padding */
+}
+
+header h1 {
+  font-size: clamp(28px, 4vw, 60px);
+  text-align: center;
+  margin: 10px;
+}
+
+main.container {
+  margin-top: 20px;
+  /* Alternatively, add margin here */
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: 12px;
+  background-color: #d4a59a;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu-bar {
+  width: 100%;
+  background-color: #d4a59a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  display: block;
+  padding: 15px 30px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: clamp(14px, 2vw, 18px);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:focus,
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.secao-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(10px, 3vw, 20px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.secao-home header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(5px, 2vw, 10px);
+  width: 100%;
+  margin-bottom: clamp(15px, 3vw, 30px);
+  flex-wrap: wrap;
+}
+
+.secao-home header h1 {
+  font-size: clamp(32px, 5vw, 60px);
+  margin: 10px;
+  text-align: center;
+}
+
+.secao-home header button {
+  padding: clamp(8px, 1.5vw, 10px);
+  margin: clamp(10px, 2vw, 20px);
+  color: white;
+  background-color: #d4a59a;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: clamp(16px, 2vw, 20px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.secao-home header button:hover {
+  background-color: white;
+  color: #d4a59a;
+  transform: scale(1.1);
+}
+
+.secao-home main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  max-width: 1200px;
+  margin-bottom: clamp(20px, 4vw, 40px);
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px white;
+  flex-wrap: wrap;
+  padding: clamp(10px, 2vw, 20px);
+  gap: 20px;
+}
+
+.secao-home main .texto {
+  width: 100%;
+  max-width: 800px;
+  padding: clamp(10px, 2vw, 20px);
+  text-align: justify;
+  flex: 1;
+}
+
+.secao-home main .texto h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  text-align: center;
+}
+
+.secao-home main .texto p {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+}
+
+.secao-home main .logo {
+  width: min(250px, 100%);
+  padding: clamp(20px, 4vw, 70px);
+}
+
+/* .secao-home .botoes {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 2vw, 20px);
+    margin-top: clamp(15px, 3vw, 30px);
+    flex-wrap: wrap;
+} */
+
+.secao-home .botoes a {
+  background-color: #d4a59a;
+  color: white;
+  padding: clamp(10px, 2vw, 15px);
+  width: clamp(100px, 15vw, 120px);
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.secao-home .botoes a:hover {
+  background-color: white;
+  color: #d4a59a;
+  transform: scale(1.05);
+}
+
+footer {
+  padding: clamp(20px, 4vw, 40px) 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(10px, 2vw, 20px);
+  flex-wrap: wrap;
+  border-top: 1px solid white;
+  gap: 20px;
+}
+
+footer .info-box {
+  width: 100%;
+  max-width: 350px;
+  padding: clamp(5px, 1.5vw, 10px);
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 250px;
+}
+
+footer .info-box h3 {
+  font-size: clamp(18px, 2.5vw, 22px);
+  margin-bottom: 10px;
+}
+
+footer .info-box p {
+  font-size: clamp(12px, 1.5vw, 14px);
+  line-height: 1.6;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .secao-home main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .secao-home main .texto {
+    order: 2;
+  }
+
+  .secao-home main .logo {
+    order: 1;
+    padding: 20px;
+  }
+
+  footer .info-box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    width: calc(50% - 20px);
+    min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .secao-home header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .secao-home main {
+    border: none;
+    box-shadow: none;
+  }
+
+  .secao-home .botoes a {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 25px;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px;
+    border-width: 1px;
+  }
+
+  .card p {
+    text-align: center;
+  }
+}
+
+footer .footer-content>div {
+  border-bottom: 1px solid white;
+  padding-bottom: 15px;
+}
+
+/* Menu Bar Styles */
+.menu-bar {
+  width: 100%;
+  background-color: #d4a59a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 101;
+  padding: 0 20px;
+}
+
+/* Menu Toggle Button Styles */
+.hamburger {
+  display: none;
+  background: none;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px 12px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger .close-icon {
+  display: none;
+}
+
+.hamburger.active .menu-icon {
+  display: none;
+}
+
+.hamburger.active .close-icon {
+  display: inline-block;
+}
+
+/* Menu Styles */
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  display: block;
+  padding: 15px 30px;
+  color: white;
+  text-decoration: none;
+  font-size: clamp(14px, 2vw, 18px);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Menu */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu-bar {
+    padding: 10px 20px;
+    min-height: 60px;
+    position: relative;
+  }
+
+  .menu {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #d4a59a;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .menu li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu a {
+    padding: 12px 20px;
+    width: 100%;
+  }
+}
+
+.container {
+  display: flex;
+  margin: clamp(10px, 3vw, 20px) auto;
+  flex-wrap: nowrap; /* Changed from wrap to nowrap */
+  justify-content: center;
+  gap: clamp(15px, 2vw, 20px);
+  padding: 0 clamp(10px, 2vw, 20px);
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px */
+  box-sizing: border-box;
+  overflow-x: auto; /* Added to allow horizontal scrolling if needed */
+  padding-bottom: 20px; /* Added to show scrollbar clearly */
+}
+
+.card {
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5);
+  padding: clamp(15px, 2vw, 20px);
+  text-align: center;
+  min-width: 280px; /* Changed from width to min-width */
+  max-width: 280px; /* Added max-width to maintain consistent size */
+  flex: 0 0 auto; /* Prevent cards from growing or shrinking */
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling */
+.container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar styling */
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Keep existing card styles */
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.7);
+}
+
+.card img {
+  border-radius: 50%;
+  width: clamp(100px, 15vw, 140px);
+  height: clamp(100px, 15vw, 140px);
+  margin-bottom: clamp(10px, 2vw, 15px);
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.card h1 {
+  font-size: clamp(20px, 3vw, 26px);
+  margin: 1px 0;
+}
+
+.card h2 {
+  font-size: clamp(16px, 2vw, 20px);
+  margin-bottom: 1px;
+}
+
+.card p {
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+  text-align: justify;
+  padding: 0 clamp(5px, 1vw, 10px);
+}
+
+/* Update media queries for better responsive behavior */
+@media screen and (max-width: 768px) {
+  .container {
+      gap: 10px;
+      padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+      padding: 10px 0;
+  }
+  
+  .card {
+      min-width: 260px; /* Slightly smaller on mobile */
+  }
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pacotes e valores de terapia disponíveis na Therapy.com">
+    <link rel="stylesheet" href="../../../public/css/fonts.css">
+    <link rel="stylesheet" href="../../../public/css/global.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Pacotes - Therapy.com</title>
+</head>
+
+<body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Navigation with proper ARIA labels -->
+   <!-- Link para pular direto para o conteúdo principal -->
+   <a href="#main-content" class="skip-link"></a>
+
+   <!-- Barra de Menu de Navegação -->
+   <nav class="menu-bar" role="navigation" aria-label="Menu Principal">
+       <button class="hamburger" aria-label="Alternar menu" aria-expanded="false">
+           <i class="fa fa-bars menu-icon" aria-hidden="true"></i>
+           <i class="fa fa-times close-icon" aria-hidden="true"></i>
+       </button>
+       <ul class="menu" id="menu">
+           <li><a href="../home/index.html" aria-label="Página inicial"><i class="fa fa-house" aria-hidden="true"></i> Início</a></li>
+           <li><a href="../planos/index.html" aria-label="Ver planos">Planos</a></li>
+           <li><a href="../agenda/index.html" aria-label="Ver agenda">Agenda</a></li>
+           <!-- <li><a href="../equipe/index.html" aria-label="Conheça a equipe">Equipe</a></li> -->
+           <li><a href="../login/index.html" aria-label="Acessar login">Login</a></li>
+       </ul>
+   </nav>
+
+    <!-- Header with proper structure -->
+    <header role="banner">
+        <h1>Therapy.com</h1>
+    </header>
+
+    <!-- Main content -->
+    <div class="container">
+        <main id="main-content" role="main">
+            <h2>Pacotes</h2>
+
+            <!-- Package cards with proper ARIA labels -->
+            <div class="pacote" role="article">
+                <h3>Sessão Experimental</h3>
+                <p class="price" aria-label="Preço: 150 reais">R$150,00</p>
+                <p class="description">Ideal para quem quer nos conhecer.</p>
+                <a href="../agenda/index.html" 
+                   class="btn-agendar" 
+                   aria-label="Agendar sessão experimental - valor 150 reais">
+                    Agendar agora
+                </a>
+            </div>
+
+            <div class="pacote" role="article">
+                <h3>Pacote Individual</h3>
+                <p class="price" aria-label="Preço: 500 reais">R$500,00</p>
+                <p class="description">Pacote para atendimento individual, com 4 sessões ao longo do mês.</p>
+                <a href="../agenda/index.html" 
+                   class="btn-agendar" 
+                   aria-label="Agendar pacote individual - valor 500 reais, 4 sessões mensais">
+                    Agendar agora
+                </a>
+            </div>
+
+            <div class="pacote" role="article">
+                <h3>Pacote Casal</h3>
+                <p class="price" aria-label="Preço: 900 reais">R$900,00</p>
+                <p class="description">Pacote destinado a casais, com 4 sessões mensais.</p>
+                <a href="../agenda/index.html" 
+                   class="btn-agendar" 
+                   aria-label="Agendar pacote casal - valor 900 reais, 4 sessões mensais">
+                    Agendar agora
+                </a>
+            </div>
+
+            <div class="pacote" role="article">
+                <h3>Pacote Familiar</h3>
+                <p class="price" aria-label="Preço: 1300 reais">R$1.300,00</p>
+                <p class="description">Pacote para família, com 4 sessões mensais.</p>
+                <a href="../agenda/index.html" 
+                   class="btn-agendar" 
+                   aria-label="Agendar pacote familiar - valor 1300 reais, 4 sessões mensais">
+                    Agendar agora
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+
+    <!-- Screen reader only text style in your CSS -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</body>
+</html>

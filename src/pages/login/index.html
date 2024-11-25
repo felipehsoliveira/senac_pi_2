@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de login da Therapy.com - Acesse sua conta">
+    <link rel="stylesheet" href="../../../public/css/fonts.css">
+    <link rel="stylesheet" href="../../../public/css/global.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Login - Therapy.com</title>
+</head>
+
+<body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Navigation Menu Bar -->
+    <nav class="menu-bar" role="navigation" aria-label="Main Menu">
+        <button class="hamburger" aria-label="Toggle menu">
+            <i class="fa fa-bars menu-icon"></i>
+            <i class="fa fa-times close-icon"></i>
+        </button>
+        <ul class="menu" id="menu">
+            <li><a href="../home/index.html" aria-label="Página inicial"><i class="fa fa-house" aria-hidden="true"></i> Início</a></li>
+            <li><a href="../planos/index.html" aria-label="Ver planos">Planos</a></li>
+            <li><a href="../agenda/index.html" aria-label="Ver agenda">Agenda</a></li>
+            <li><a href="../login/index.html" aria-label="Acessar login">Login</a></li>
+        </ul>
+    </nav>
+
+    <header role="banner">
+        <h1>Therapy.com</h1>
+    </header>
+
+    <main id="main-content" class="container">
+        <h2>Login</h2>
+        <form onsubmit="return validateForm(event)" aria-label="Formulário de login">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="email@email.com" required aria-required="true" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="******" required aria-required="true" autocomplete="current-password">
+            </div>
+
+            <button class = "button" type="submit" aria-label="Fazer login">Login</button>
+        </form>
+
+        <p>
+            Não tem uma conta?
+            <a href="../cadastro/index.html" class="cadastro-link" aria-label="Ir para página de cadastro">Cadastre-se aqui</a>
+        </p>
+    </main>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                alert('Login Realizado com sucesso!');
+                window.location.href = '../planos/index.html';
+            } else {
+                alert('Por favor, preencha todos os campos!');
+                document.getElementById('email').setAttribute('aria-invalid', !email);
+                document.getElementById('password').setAttribute('aria-invalid', !password);
+            }
+            return false;
+        }
+
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>

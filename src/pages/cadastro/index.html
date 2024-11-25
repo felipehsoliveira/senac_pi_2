@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/css/fonts.css">
+    <link rel="stylesheet" href="../../../public/css/global.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cadastro - Therapy.com</title>
+</head>
+
+<body>
+    <!-- Link para pular direto para o conteúdo principal -->
+    <a href="#main-content" class="skip-link"></a>
+
+    <!-- Barra de Menu de Navegação -->
+    <nav class="menu-bar" role="navigation" aria-label="Menu Principal">
+        <button class="hamburger" aria-label="Alternar menu" aria-expanded="false">
+            <i class="fa fa-bars menu-icon" aria-hidden="true"></i>
+            <i class="fa fa-times close-icon" aria-hidden="true"></i>
+        </button>
+        <ul class="menu" id="menu">
+            <li><a href="../home/index.html" aria-label="Página inicial"><i class="fa fa-house" aria-hidden="true"></i> Início</a></li>
+            <li><a href="../planos/index.html" aria-label="Ver planos">Planos</a></li>
+            <li><a href="../agenda/index.html" aria-label="Ver agenda">Agenda</a></li>
+            <!-- <li><a href="../equipe/index.html" aria-label="Conheça a equipe">Equipe</a></li> -->
+            <li><a href="../login/index.html" aria-label="Acessar login">Login</a></li>
+        </ul>
+    </nav>
+
+    <header role="banner">
+        <h1>Therapy.com</h1>
+    </header>
+
+    <main id="main-content" class="container">
+        <h2>Cadastro</h2>
+        <form id="cadastroForm" aria-labelledby="cadastro-heading">
+            <h3 id="cadastro-heading" class="sr-only">Formulário de Cadastro</h3>
+
+            <label for="firstName">Nome:</label>
+            <input type="text" id="firstName" name="firstName" required aria-required="true">
+
+            <label for="lastName">Sobrenome:</label>
+            <input type="text" id="lastName" name="lastName" required aria-required="true">
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required aria-required="true" maxlength="14">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required aria-required="true">
+
+            <button class="button" type="submit" aria-label="Finalizar cadastro">Cadastrar</button>
+        </form>
+    </main>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+
+        // CPF mask
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        document.getElementById('cadastroForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = '../login/index.html';
+        });
+
+        hamburger.addEventListener('click', function () {
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+            document.getElementById('menu').classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>
+

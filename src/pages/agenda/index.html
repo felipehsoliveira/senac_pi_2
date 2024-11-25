@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/css/fonts.css">
+    <link rel="stylesheet" href="../../../public/css/global.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Agendamento - Therapy.com</title>
+</head>
+
+<body>
+    <!-- Link para pular direto para o conteúdo principal -->
+    <a href="#main-content" class="skip-link"></a>
+
+    <!-- Barra de Menu de Navegação -->
+    <nav class="menu-bar" role="navigation" aria-label="Menu Principal">
+        <button class="hamburger" aria-label="Alternar menu" aria-expanded="false">
+            <i class="fa fa-bars menu-icon" aria-hidden="true"></i>
+            <i class="fa fa-times close-icon" aria-hidden="true"></i>
+        </button>
+        <ul class="menu" id="menu">
+            <li><a href="../home/index.html" aria-label="Página inicial"><i class="fa fa-house" aria-hidden="true"></i> Início</a></li>
+            <li><a href="../planos/index.html" aria-label="Ver planos">Planos</a></li>
+            <li><a href="../agenda/index.html" aria-label="Ver agenda">Agenda</a></li>
+            <!-- <li><a href="../equipe/index.html" aria-label="Conheça a equipe">Equipe</a></li> -->
+            <li><a href="../login/index.html" aria-label="Acessar login">Login</a></li>
+        </ul>
+    </nav>
+
+    <header role="banner">
+        <h1>Therapy.com</h1>
+    </header>
+
+    <main id="main-content" class="container">
+        <h2>Agendamento</h2>
+        <form id="agendamentoForm" aria-labelledby="agendamento-heading">
+            <h3 id="agendamento-heading" class="sr-only">Formulário de Agendamento</h3>
+
+            <label for="data">Escolha a data:</label>
+            <input type="date" id="data" name="data" required aria-required="true">
+
+            <label for="hora">Escolha a hora:</label>
+            <input type="time" id="hora" name="hora" required aria-required="true">
+
+            <label for="profissional">Escolha o profissional:</label>
+            <select name="profissional" id="profissional" required aria-required="true">
+                <option value="">Selecione</option>
+                <option value="prof1">Dr. Rafael</option>
+                <option value="prof2">Dra. Luana</option>
+                <option value="prof3">Dra. Júlia</option>
+                <option value="prof4">Dr. Gustavo</option>
+            </select>
+
+            <label for="pacote">Escolha o pacote:</label>
+            <select name="pacote" id="pacote" required aria-required="true">
+                <option value="">Selecione</option>
+                <option value="pacote0">Sessão Experimental (ÚNICA) - R$ 150,00</option>
+                <option value="pacote1">Individual (Mensal, 4 Sessões) - R$ 500,00</option>
+                <option value="pacote2">Casal (Mensal, 4 Sessões) - R$ 900,00</option>
+                <option value="pacote3">Familiar (Mensal, 4 Sessões) - R$ 1300,00</option>
+            </select>
+
+            <label for="metodo_pagamento">Selecione o tipo de pagamento:</label>
+            <select id="metodo_pagamento" name="metodo_pagamento" required aria-required="true">
+                <option value="">Selecione</option>
+                <option value="credito">Crédito</option>
+                <option value="debito">Débito</option>
+            </select>
+
+            <div id="cardDetails" style="display: none;" aria-labelledby="card-details-heading">
+                <h3 id="card-details-heading">Detalhes do Cartão</h3>
+                <label for="cardNumber">Número do Cartão</label>
+                <input type="text" class="payment-input" id="cardNumber" placeholder="1234 5678 9012 3456" required aria-required="true" aria-describedby="card-number-format">
+                <span id="card-number-format" class="sr-only">Formato: 1234 5678 9012 3456</span>
+
+                <label for="expiryDate">Data de Validade</label>
+                <input type="text" class="payment-input" id="expiryDate" placeholder="MM/AA" required aria-required="true" aria-describedby="expiry-date-format">
+                <span id="expiry-date-format" class="sr-only">Formato: MM/AA</span>
+
+                <label for="cvv">CVV</label>
+                <input type="text" class="payment-input" id="cvv" placeholder="123" required aria-required="true" aria-describedby="cvv-format">
+                <span id="cvv-format" class="sr-only">Três dígitos no verso do cartão</span>
+            </div>
+
+            <button class="button" type="submit" aria-label="Finalizar agendamento">Finalizar</button>
+        </form>
+    </main>
+
+    <script>
+        const paymentType = document.getElementById('metodo_pagamento');
+        const cardDetails = document.getElementById('cardDetails');
+        const hamburger = document.querySelector('.hamburger');
+
+        paymentType.addEventListener('change', function () {
+            cardDetails.style.display = this.value === 'credito' || this.value === 'debito' ? 'block' : 'none';
+        });
+
+        document.getElementById('agendamentoForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Agendamento realizado com sucesso!');
+            window.location.href = '../home/index.html';
+        });
+
+        hamburger.addEventListener('click', function () {
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+            document.getElementById('menu').classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>
+
